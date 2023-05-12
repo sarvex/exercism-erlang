@@ -11,6 +11,7 @@ This is used in the CI scripts to create a buildmatrix that contains the latest
 minors of the last 3 to 4 majors.
 """
 
+
 import sys
 import json
 
@@ -21,6 +22,6 @@ versions = {}
 for major, minor in splits:
     versions[major] = versions.get(major, []) + [minor]
 
-maxes = ["{}.{}".format(major, max(minors)) for major, minors in versions.items()]
+maxes = [f"{major}.{max(minors)}" for major, minors in versions.items()]
 
 print(json.dumps(maxes))
